@@ -1,104 +1,279 @@
-/* CSS Variables for Theme Management */
+/* Style guide accents:
+   primary: #3b82f6
+   success: #06b6d4
+   background: #1f2937
+   surface: #374151
+   text: #f9fafb
+*/
+
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --primary: #3b82f6;
+  --success: #06b6d4;
+  --danger: #ef4444;
+
+  --bg: #1f2937;
+  --surface: #374151;
+  --surface-2: rgba(55, 65, 81, 0.6);
+  --text: #f9fafb;
+  --muted: rgba(249, 250, 251, 0.72);
+  --border: rgba(249, 250, 251, 0.12);
+
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+* {
+  box-sizing: border-box;
 }
 
-.App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+.page {
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: radial-gradient(1200px 600px at 10% 0%, rgba(59, 130, 246, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 90% 10%, rgba(6, 182, 212, 0.14), transparent 55%),
+    var(--bg);
+  color: var(--text);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  padding: 28px 16px 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
-  min-height: 100vh;
+.header-inner {
+  max-width: 920px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+.subtitle {
+  margin: 0;
+  color: var(--muted);
   font-size: 14px;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+}
+
+.section-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+.form-row {
+  display: grid;
+  gap: 6px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.input {
+  width: 100%;
+  background: rgba(31, 41, 55, 0.55);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.22);
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  background: transparent;
+  transition: transform 0.06s ease, opacity 0.2s ease, border-color 0.2s ease;
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+.btn:active {
+  transform: translateY(1px);
 }
 
-.theme-toggle:active {
-  transform: translateY(0);
+.btn-primary {
+  background: var(--primary);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.btn-ghost {
+  border-color: var(--border);
+  background: rgba(31, 41, 55, 0.25);
+}
+
+.btn-secondary {
+  border-color: rgba(6, 182, 212, 0.35);
+  background: rgba(6, 182, 212, 0.18);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+.alert {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.16);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(55, 65, 81, 0.55);
+  border: 1px solid var(--border);
+}
+
+.item-completed .item-title {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--success);
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.item-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.item-desc {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.meta {
+  margin-top: 6px;
+  color: rgba(249, 250, 251, 0.55);
+  font-size: 12px;
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.edit {
+  display: grid;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.footer {
+  padding-top: 4px;
+}
+
+.footer-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+code {
+  background: rgba(31, 41, 55, 0.55);
+  border: 1px solid var(--border);
+  padding: 2px 6px;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+  .item {
+    grid-template-columns: 28px 1fr;
+    grid-template-areas:
+      "check main"
+      "check actions";
+  }
+
+  .item-left {
+    grid-area: check;
+  }
+
+  .item-main {
+    grid-area: main;
+  }
+
+  .item-actions {
+    grid-area: actions;
+    justify-content: flex-start;
   }
 }
