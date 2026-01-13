@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-const API_BASE = 'http://localhost:3001';
+const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:3001';
 
 async function apiRequest(path, options = {}) {
   const res = await fetch(`${API_BASE}${path}`, {
